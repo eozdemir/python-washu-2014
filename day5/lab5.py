@@ -124,8 +124,7 @@ def findPath(graph, start, end, path=[]):
                 if newpath: return newpath
         return None
 
-print findPath(movies, jr, ms)
-
+# print findPath(movies, jr, ms)
 
 # TODO: implement findAllPaths() to find all paths between two nodes
 
@@ -141,16 +140,22 @@ def findAllPaths(graph, start, end, path=[]):
         			paths.append(new_path)
         return paths
  
-allPaths = findAllPaths(movies, jr, ms)
-for path in allPaths:
-  print path
+# allPaths = findAllPaths(movies, jr, ms)
+# for path in allPaths:
+#   print path
+
+print findAllPaths(movies, ms, ss)
   
 # TODO: implement findShortestPath()
 
 def findShortestPath(graph, start, end):
 		all_paths = findAllPaths(graph, start, end)
-		num = len(all_path)
-		
-		
+		num = len(all_paths)
+		tmp = []
+		for i in range(num):
+			tmp.append(len(all_paths[i]))
+		for i in range(num):
+			if len(all_paths[i]) == min(tmp):
+				print all_paths[i]
 		
 print findShortestPath(movies, ms, ss)
