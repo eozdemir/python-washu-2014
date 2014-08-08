@@ -14,10 +14,10 @@ class School():
       
   def sort(self):
     sorted_students = {}
-    for i in sorted(self.db.keys()):
+    for i in self.db.keys():
       sorted_students[i] = sorted(self.db[i])
       # since sorted forced them into list
-      sorted_students[i] = tuple(sorted_students[i] 
+      sorted_students[i] = tuple(sorted_students[i])
     return sorted_students
       
   def grade(self, student_grade):

@@ -5,3 +5,5 @@ day3/exceptions_example.py
 day3/lab3.pyc
 
 day3/bob.pyc
+
+*.pyc
