@@ -74,6 +74,7 @@ for i in range(25):
   comments.append(comment[0])       # using the attribute name didn't work well, the comment was the first attribute
   time.sleep(3)
 
+
 # Getting most recent 25 posts  
 for i in range(25):
   pages = range (1,26)
