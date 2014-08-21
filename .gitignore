@@ -7,3 +7,5 @@ day3/lab3.pyc
 day3/bob.pyc
 
 *.pyc
+
+.DS_Store
