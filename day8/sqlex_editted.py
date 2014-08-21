@@ -23,6 +23,7 @@ class Player(Base):
   number = Column(Integer)
   
   team_id = Column(Integer, ForeignKey("teams.id")) # refers to id column in teams table
+  # ForeignKey linking this one with another tables primary key
   
   def __init__(self, name, number, team=None):
     self.name = name
@@ -74,7 +75,7 @@ session.add_all([
 session.commit()  # This is when the players are actually aded
 str(mason.id)
 
-#Some querying
+#Some querying/ query the 'players' table
 #order the results
 for player in session.query(Player).order_by(Player.number):
   print player.number, player.name
@@ -140,3 +141,5 @@ other_plumlee.name = "Marshall Plumlee"
 session.dirty
 session.commit()
 
+# you can read databases directly into R
+# RSQLite
