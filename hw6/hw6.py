@@ -61,6 +61,6 @@ def most_active(target):
 #Get our target
 matt = api.get_user('mcdickenson')
 
-print most_followed(matt)
-print most_active(matt)
+print most_followed(matt) # VirginAmerica
+print most_active(matt)   # jseattle
     

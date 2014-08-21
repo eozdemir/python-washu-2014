@@ -15,40 +15,33 @@ Base = declarative_base()
 
 #Define some schemas
 class Player(Base):
-  __tablename__ = 'players'
-  
+  __tablename__ = 'players' 
   #Have an ID column because player attributes (name, etc) are not unique
   id = Column(Integer, primary_key=True) # this will be the thing that uniquely identifies this table
   name = Column(String)
   number = Column(Integer)
-  
   team_id = Column(Integer, ForeignKey("teams.id")) # refers to id column in teams table
   # ForeignKey linking this one with another tables primary key
-  
   def __init__(self, name, number, team=None):
     self.name = name
     self.number = number
-    self.team = team
-    
+    self.team = team 
   def __repr__(self): 
     return "<Player('%s', '%s)>" % (self.name, self.number)
 
 
 class Team(Base):
   __tablename__ = "teams"
-  
   id = Column(Integer, primary_key=True)
   name = Column(String)
   players = relationship("Player", backref="team") # multiple players can belong to the same team
-  
   def __init__(self, name):
     self.name = name
-  
   def __repr__(self):
     return "<team('%s')>" % (self.name)
 
 # First time create tables
-Base.metadata.create_all(engine) 
+Base.metadata.create_all(engine) # gives errors but i can see the structure later
 
 #See structure of players table:
 Player.__table__  
