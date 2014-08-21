@@ -1,4 +1,6 @@
-#pip install sqlalchemy, pip install pysqlite
+# install sqlite from sqlite.org
+# pip install sqlalchemy
+# pip install pysqlite
 import sqlalchemy
 
 from sqlalchemy.ext.declarative import declarative_base
@@ -29,8 +31,13 @@ class Player(Base):
     self.number = number
     self.team = team
     
+<<<<<<< HEAD
   def __repr__(self): 
     return "<Player('%s', '%s)>" % (self.name, self.number)
+=======
+  def __repr__(self):
+    return "<Player('%s', '%s')>" % (self.name, self.number)
+>>>>>>> upstream/master
 
 
 class Team(Base):
@@ -45,8 +52,9 @@ class Team(Base):
   
   def __repr__(self):
     return "<team('%s')>" % (self.name)
-
 # First time create tables
+
+
 Base.metadata.create_all(engine) 
 
 #See structure of players table:
@@ -133,10 +141,17 @@ session.delete(seth)
 session.query(Player).filter(Player.number == 30).count()
 session.query(Player).filter(Player.name.like("%Seth%")).count()
 players
+players = session.query(Player).all()
+players 
 
 #Updating
-other_plumlee = players[4]
+other_plumlee = players[3]
 other_plumlee.name = "Marshall Plumlee"
 session.dirty
 session.commit()
+
+# How to convert data to csv
+players = session.query(Player).all()
+for player in players:
+  print player.name, player.number, player.team
 
