@@ -20,13 +20,6 @@ webpage = urllib2.urlopen(page_to_scrape)
 soup = BeautifulSoup(webpage.read())
 soup.prettify()
 
-# For date table
-# dates = soup.findAll("li", attrs = {'class':"clear"})
-# print len(dates)
-# for date in dates:
-#   d = clean_html(str(date.find("span")))
-#   print d
-
 # For title table
 titles = soup.findAll("li", attrs = {'class':"clear"})
 print len(titles)
@@ -35,20 +28,16 @@ for title in titles:
   t = t[18::]
   print "{0}".format(t.encode('ascii', 'ignore'))
 
-# date_array = []
 title_array = []  
 author_array = ['Robert']*25
+# p.s. The code for scraping the author name works but doesn't return a very clean string, that's why i generated the array like this
 for i in range(25):
-#   date = dates[i]
-#   d = clean_html(str(date.find("span")))
   title = titles[i]
   t = clean_html(title.find("a")['title'])[18::]
   t = t.encode('ascii', 'ignore')
-#   date_array.append(d)
   title_array.append(t)
-# print date_array
-print title_array
-print author_array 
+# print title_array
+# print author_array 
   
 #Connect to the local database
 engine = sqlalchemy.create_engine('sqlite:////Users/elifozdemir/inclass.db', echo=True)
@@ -86,7 +75,7 @@ for i in range(len(title_array)):
   session.add(post_to_add)
 
 #Persist all of this information
-session.commit()  # This is when dates are actually added     
+session.commit()     
 
 #how to work with relations
 robert = Author('Robert')
@@ -99,4 +88,5 @@ print posts[0].author
 print posts[0].author.posts # all posts from the author of first post/ basically all posts since the author is the same
 # equivalently 
 # print posts
+
 
