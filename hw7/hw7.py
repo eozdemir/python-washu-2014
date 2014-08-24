@@ -80,12 +80,11 @@ session.commit()
 robert = Author('Robert')
 
 posts = session.query(Post).all()
-#print posts
 for i in range(len(posts)):
     posts[i].author = robert
 
 print posts[0].author
-#print posts[0].author.posts # all posts from the author of first post/ basically all posts since the author is the same
+print posts[0].author.posts # all posts from the author of first post/ basically all posts since the author is the same
 # equivalently
 # print posts
 
@@ -102,11 +101,12 @@ def followers(target):
     for f in tweepy.Cursor(api.followers, screen_name=target.screen_name).items():
         name.append(f.screen_name)
         count.append(f.followers_count)
-        time.sleep(3)
+        time.sleep(5)
     return (name, count)
 
 #Get our target
-matt = api.get_user('mcdickenson')
+matt = api.get_user('doanimen2')
+# First I used Matt, but to make it run shorter I used a someone with only 4 followers
 print followers(matt)
 
 class User(Base):
@@ -118,7 +118,7 @@ class User(Base):
         self.name = name
         self.count = count
     def __repr__(self):
-        return "<User('%s')>" % (self.name, self.count)
+        return "<User('%s','%s')>" % (self.name, self.count)
 
 Base.metadata.create_all(engine)
 session2 = Session()
@@ -133,7 +133,7 @@ for i in range(len(name)):
 session2.commit()
 users = session2.query(User).all()
 
-for i in range(10): # print first 10 users to see how it works
+for i in range(4):
     print users[i]
 
 
