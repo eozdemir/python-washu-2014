@@ -90,8 +90,6 @@ print posts[0].author.posts # all posts from the author of first post/ basically
 
 # Using APIs from hw6
 # I didn't use relation for this part, its only a user_table
-auth = tweepy.OAuthHandler('4OPZSApEAgpcZSwDiPWx5MJ14', 'quPZW5f22Wah2XQPH4uqrocxStPHFe5o3fSi6pSzhcQvg98J7m')
-auth.set_access_token('115127039-71WjpPaGHyBaNm3JNRlovG6MgoFg4ixiim7f5ow9', 'cwD6iQPJj9aYjYeIAv0s25TvBt1jGRSRYBRccJjNMh2K5')
 api = tweepy.API(auth)
 
 def followers(target):
